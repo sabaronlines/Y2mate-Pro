@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -62,7 +63,7 @@
       box-shadow: 0 0 30px rgba(255, 46, 99, 0.2);
     }
 
-    /* Mountain Shaped SVG Footer Animation */
+    /* Mountain Shaped SVG Footer */
     .mountain-shape {
       width: 100%;
       overflow: hidden;
@@ -83,13 +84,14 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
+  <!-- Ambient Glow & Flying Background Icons -->
   <div class="ambient-glow"></div>
   <i class="fa-solid fa-play flying-icon icon-1"></i>
   <i class="fa-brands fa-youtube flying-icon icon-2"></i>
   <i class="fa-solid fa-circle-play flying-icon icon-3"></i>
   <i class="fa-solid fa-play flying-icon icon-4"></i>
 
-  <!-- Navbar -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 glass-card border-b border-white/5 py-4 px-6">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
@@ -105,32 +107,31 @@
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
         <a href="#downloader" class="text-white hover:text-[#ff2e63] transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-[#ff2e63]"></i> Downloader</a>
         <a href="#recentSection" class="hover:text-[#ff2e63] transition flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
-        <a href="#relatedSection" class="hover:text-[#ff2e63] transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-400"></i> Trending</a>
       </nav>
 
       <span class="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-white font-semibold">
-        <i class="fa-solid fa-shield-halved text-[#ff2e63]"></i> Direct Gateway
+        <i class="fa-solid fa-shield-halved text-[#ff2e63]"></i> Self Hosted
       </span>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main Section -->
   <main class="relative z-10 flex-grow max-w-6xl mx-auto px-4 py-12 w-full">
     
     <div class="text-center max-w-3xl mx-auto mb-10" id="downloader">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ff2e63]/10 border border-[#ff2e63]/30 text-[#ff2e63] text-xs font-semibold mb-4 animate-pulse">
-        <i class="fa-solid fa-wand-magic-sparkles"></i> 100% Working No-Block Engine
+        <i class="fa-solid fa-wand-magic-sparkles"></i> 100% In-Page Processing
       </div>
       <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
         YouTube Video & Audio <br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff2e63] via-[#ff7597] to-white">Instant Downloader</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff2e63] via-[#ff7597] to-white">Next-Gen Downloader</span>
       </h1>
       <p class="text-gray-400 text-sm md:text-base mt-3">
-        Download Shorts, Full Videos & MP3 audio without any server limits or verification checks.
+        Download MP4, MP3 & HD Thumbnails directly on this page without external redirects.
       </p>
     </div>
 
-    <!-- Search / URL Form Card -->
+    <!-- Search Form -->
     <div class="glass-card p-3 rounded-2xl max-w-3xl mx-auto neon-pink-border mb-12 shadow-2xl relative overflow-hidden">
       <form id="downloadForm" class="flex flex-col sm:flex-row gap-3">
         <div class="relative flex-grow flex items-center">
@@ -139,7 +140,7 @@
             type="url" 
             id="videoUrl"
             required
-            placeholder="Paste YouTube Video or Shorts link..." 
+            placeholder="Paste your YouTube video or shorts link here..." 
             class="w-full pl-12 pr-4 py-4 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm outline-none focus:border-[#ff2e63] transition"
           />
         </div>
@@ -157,7 +158,7 @@
       <div id="loaderBox" class="hidden mt-6 pt-5 border-t border-white/10 text-center">
         <div class="flex items-center justify-center gap-3 text-sm font-semibold text-gray-200 mb-3">
           <i class="fa-solid fa-circle-notch fa-spin text-[#ff2e63] text-lg"></i>
-          <span id="loaderStatusText">Bypassing security filters...</span>
+          <span id="loaderStatusText">Connecting stream engine...</span>
         </div>
         <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden max-w-md mx-auto border border-white/10">
           <div id="progressBar" class="bg-gradient-to-r from-[#ff2e63] to-white h-full w-0 transition-all duration-300"></div>
@@ -166,48 +167,60 @@
       </div>
     </div>
 
-    <!-- Video Result Section -->
+    <!-- On-Page Native Download Section -->
     <section id="resultSection" class="hidden mb-16">
       <div class="glass-card rounded-2xl p-6 md:p-8 neon-pink-border shadow-2xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
+          <!-- Left: Thumbnail & High-Res Download Buttons -->
           <div class="lg:col-span-5 space-y-4">
-            <div class="relative group rounded-xl overflow-hidden border border-white/10 aspect-video shadow-lg">
+            <div class="relative rounded-xl overflow-hidden border border-white/10 aspect-video shadow-lg">
               <img id="resThumb" src="" alt="Thumbnail" class="w-full h-full object-cover">
-              <span id="resDuration" class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-[11px] font-mono text-white">1080p / 720p / MP3</span>
+              <span class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 rounded text-[11px] font-mono text-white">1080p / MP3 Ready</span>
             </div>
 
-            <h3 id="resTitle" class="text-base font-bold text-white line-clamp-2 leading-snug">YouTube Media Detected</h3>
+            <h3 id="resTitle" class="text-sm font-bold text-white line-clamp-2 leading-snug">YouTube Video Stream</h3>
 
-            <!-- Download HD Thumbnail Link -->
-            <a 
-              id="btnThumbDownload" 
-              href="#" 
-              target="_blank" 
-              download 
-              class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-gray-300 hover:text-white flex items-center justify-center gap-2 transition"
-            >
-              <i class="fa-solid fa-image text-[#ff2e63]"></i> Download HD Thumbnail
-            </a>
+            <!-- 1280x720 & 640x480 Thumbnail Download Options -->
+            <div class="pt-2 border-t border-white/10 space-y-2">
+              <span class="text-xs font-semibold text-gray-400 block mb-1">
+                <i class="fa-solid fa-image text-[#ff2e63]"></i> Download Thumbnail:
+              </span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <button 
+                  type="button"
+                  onclick="downloadThumbnail('maxresdefault', 'YouTube_Thumb_1280x720')" 
+                  class="py-2 px-3 rounded-xl bg-white/5 hover:bg-[#ff2e63] border border-white/10 text-[11px] font-semibold text-white flex items-center justify-between transition group cursor-pointer"
+                >
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-sparkles text-amber-400"></i> 1280×720 HD</span>
+                  <i class="fa-solid fa-download group-hover:translate-y-0.5 transition text-[10px]"></i>
+                </button>
+
+                <button 
+                  type="button"
+                  onclick="downloadThumbnail('hqdefault', 'YouTube_Thumb_640x480')" 
+                  class="py-2 px-3 rounded-xl bg-white/5 hover:bg-[#ff2e63] border border-white/10 text-[11px] font-semibold text-white flex items-center justify-between transition group cursor-pointer"
+                >
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-photo-film text-blue-400"></i> 640×480 SD</span>
+                  <i class="fa-solid fa-download group-hover:translate-y-0.5 transition text-[10px]"></i>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <!-- Quality Table -->
+          <!-- Right: In-Page Embedded Download Widget -->
           <div class="lg:col-span-7">
             <h4 class="text-xs uppercase font-extrabold tracking-wider text-gray-400 mb-3 flex items-center gap-2">
-              <i class="fa-solid fa-download text-[#ff2e63]"></i> Instant Download Servers
+              <i class="fa-solid fa-cloud-arrow-down text-[#ff2e63]"></i> Video & Audio Streams (In-Page)
             </h4>
-            <div class="overflow-x-auto rounded-xl border border-white/10 bg-black/20">
-              <table class="w-full text-left text-xs md:text-sm">
-                <thead>
-                  <tr class="border-b border-white/10 bg-white/5 text-gray-400 font-semibold">
-                    <th class="py-3 px-4">Type</th>
-                    <th class="py-3 px-4">Quality / Bitrate</th>
-                    <th class="py-3 px-4 text-right">Download</th>
-                  </tr>
-                </thead>
-                <tbody id="formatsTableBody" class="divide-y divide-white/5">
-                </tbody>
-              </table>
+            <div class="rounded-xl overflow-hidden border border-white/10 bg-black/40 p-2">
+              <iframe 
+                id="downloadIframe" 
+                src="" 
+                class="w-full h-[330px] rounded-lg border-0"
+                allowtransparency="true" 
+                scrolling="yes">
+              </iframe>
             </div>
           </div>
 
@@ -222,66 +235,12 @@
           <h2 class="text-xl font-bold text-white flex items-center gap-2">
             <i class="fa-solid fa-clock-rotate-left text-[#ff2e63]"></i> Recently Converted
           </h2>
-          <p class="text-xs text-gray-400">Quickly re-download recently fetched links</p>
+          <p class="text-xs text-gray-400">Quickly re-load recent videos</p>
         </div>
-        <button id="clearHistoryBtn" class="text-xs text-gray-400 hover:text-[#ff2e63] transition underline">Clear All</button>
+        <button id="clearHistoryBtn" class="text-xs text-gray-400 hover:text-[#ff2e63] transition underline cursor-pointer">Clear All</button>
       </div>
 
       <div id="recentGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-      </div>
-    </section>
-
-    <!-- Related / Trending YouTube Cards -->
-    <section id="relatedSection" class="mb-12">
-      <div class="mb-6">
-        <h2 class="text-xl font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-fire text-[#ff2e63]"></i> Trending Formats
-        </h2>
-        <p class="text-xs text-gray-400">Popular links to convert</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group hover:border-[#ff2e63]/40 transition">
-          <div class="relative aspect-video overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute bottom-2 right-2 bg-black/80 text-[10px] px-2 py-0.5 rounded text-white font-mono">10:45</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-bold text-sm text-white line-clamp-1 group-hover:text-[#ff2e63] transition">AI & Automation Masterclass 2026</h4>
-            <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2">
-              <span><i class="fa-solid fa-eye text-xs"></i> 2.4M Views</span>
-              <button onclick="fillUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ')" class="text-[#ff2e63] font-semibold hover:underline">Download</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group hover:border-[#ff2e63]/40 transition">
-          <div class="relative aspect-video overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute bottom-2 right-2 bg-black/80 text-[10px] px-2 py-0.5 rounded text-white font-mono">03:22</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-bold text-sm text-white line-clamp-1 group-hover:text-[#ff2e63] transition">Cyberpunk Neon Synthwave Mix</h4>
-            <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2">
-              <span><i class="fa-solid fa-eye text-xs"></i> 890K Views</span>
-              <button onclick="fillUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ')" class="text-[#ff2e63] font-semibold hover:underline">Download</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group hover:border-[#ff2e63]/40 transition">
-          <div class="relative aspect-video overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute bottom-2 right-2 bg-black/80 text-[10px] px-2 py-0.5 rounded text-white font-mono">08:15</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-bold text-sm text-white line-clamp-1 group-hover:text-[#ff2e63] transition">Lofi Hip Hop Coding Beats</h4>
-            <div class="flex items-center justify-between text-[11px] text-gray-400 mt-2">
-              <span><i class="fa-solid fa-eye text-xs"></i> 5.1M Views</span>
-              <button onclick="fillUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ')" class="text-[#ff2e63] font-semibold hover:underline">Download</button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -294,7 +253,7 @@
     </svg>
   </div>
 
-  <!-- Footer -->
+  <!-- Mountain Wave Footer -->
   <footer class="bg-[#0d0d16] border-t border-white/5 relative z-10 text-xs text-gray-400 pb-8 pt-4">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/5">
@@ -308,17 +267,17 @@
         <div class="flex items-center gap-6">
           <a href="#" class="hover:text-white transition">Privacy Policy</a>
           <a href="#" class="hover:text-white transition">Terms of Service</a>
-          <a href="#" class="hover:text-white transition">Status</a>
+          <a href="#" class="hover:text-white transition">API Status</a>
         </div>
       </div>
 
       <div class="text-center pt-6 text-[11px] text-gray-500">
-        © 2026 Y2Mate Pro. Designed for high speed personal conversions.
+        © 2026 Y2Mate Pro. Self-Hosted In-Page Downloader.
       </div>
     </div>
   </footer>
 
-  <!-- Script -->
+  <!-- Script Engine -->
   <script>
     const form = document.getElementById('downloadForm');
     const inputUrl = document.getElementById('videoUrl');
@@ -328,14 +287,40 @@
     const progressBar = document.getElementById('progressBar');
     const timerCount = document.getElementById('timerCount');
     const resultSection = document.getElementById('resultSection');
-    const formatsTableBody = document.getElementById('formatsTableBody');
+    const downloadIframe = document.getElementById('downloadIframe');
     const recentGrid = document.getElementById('recentGrid');
     const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 
-    function fillUrl(url) {
-      inputUrl.value = url;
-      inputUrl.focus();
-      form.scrollIntoView({ behavior: 'smooth' });
+    let currentVideoId = "";
+
+    // Force Download Thumbnail Directly to Device
+    async function downloadThumbnail(qualityName, saveFileName) {
+      if (!currentVideoId) {
+        alert("Please convert a YouTube video first!");
+        return;
+      }
+
+      const imgUrl = `https://img.youtube.com/vi/${currentVideoId}/${qualityName}.jpg`;
+
+      try {
+        const response = await fetch(imgUrl);
+        if (!response.ok && qualityName === 'maxresdefault') {
+          return downloadThumbnail('hqdefault', saveFileName);
+        }
+
+        const blob = await response.blob();
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = `${saveFileName}_${currentVideoId}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(downloadUrl);
+      } catch (e) {
+        // Fallback: open directly if blocked
+        window.open(imgUrl, '_blank');
+      }
     }
 
     function renderRecents() {
@@ -353,20 +338,19 @@
         <div class="glass-card rounded-xl overflow-hidden border border-white/10 p-3">
           <div class="relative aspect-video rounded-lg overflow-hidden mb-2">
             <img src="${item.thumb}" class="w-full h-full object-cover">
-            <span class="absolute bottom-1 right-1 bg-black/80 text-[10px] px-1.5 py-0.5 rounded text-white">${item.time}</span>
           </div>
           <h5 class="text-xs font-semibold text-white truncate">${item.title}</h5>
-          <a href="${item.url}" target="_blank" class="mt-2 block w-full text-center py-1.5 rounded bg-white/5 hover:bg-[#ff2e63] text-white text-[11px] font-bold transition">
-            <i class="fa-solid fa-download text-[10px]"></i> Get Download
-          </a>
+          <button onclick="inputUrl.value='${item.origUrl}'; form.dispatchEvent(new Event('submit'));" class="mt-2 block w-full text-center py-1.5 rounded bg-white/5 hover:bg-[#ff2e63] text-white text-[11px] font-bold transition cursor-pointer">
+            <i class="fa-solid fa-arrow-rotate-right text-[10px]"></i> Convert In Page
+          </button>
         </div>
       `).join('');
     }
 
-    function saveToRecent(title, thumb, url) {
+    function saveToRecent(title, thumb, origUrl) {
       const recents = JSON.parse(localStorage.getItem('y2_pro_recent') || '[]');
       const filtered = recents.filter(r => r.title !== title);
-      filtered.unshift({ title, thumb, url, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+      filtered.unshift({ title, thumb, origUrl, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
       localStorage.setItem('y2_pro_recent', JSON.stringify(filtered.slice(0, 4)));
       renderRecents();
     }
@@ -384,14 +368,15 @@
       const rawUrl = inputUrl.value.trim();
       if (!rawUrl) return;
 
-      // Extract YouTube ID
       const match = rawUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
       const videoId = match ? match[1] : null;
 
       if (!videoId) {
-        alert('Invalid YouTube URL! Kripya sahi video ya shorts ka link dalein.');
+        alert('Invalid YouTube URL! Please enter a valid YouTube video or shorts link.');
         return;
       }
+
+      currentVideoId = videoId;
 
       btnSubmit.disabled = true;
       btnSubmit.classList.add('opacity-50');
@@ -401,7 +386,7 @@
       let progress = 20;
       let seconds = 0;
       progressBar.style.width = '20%';
-      loaderStatusText.innerText = 'Extracting media streams...';
+      loaderStatusText.innerText = 'Extracting in-page stream...';
 
       const timerInterval = setInterval(() => {
         seconds++;
@@ -410,61 +395,20 @@
           progress += 30;
           progressBar.style.width = progress + '%';
         }
-        if (seconds === 1) loaderStatusText.innerText = 'Connecting high-speed conversion servers...';
-      }, 500);
+      }, 400);
 
       setTimeout(() => {
         clearInterval(timerInterval);
         progressBar.style.width = '100%';
-        loaderStatusText.innerText = 'Ready! Formats extracted.';
 
         const highResThumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
         document.getElementById('resThumb').src = highResThumb;
-        document.getElementById('resTitle').innerText = `YouTube Media ID: ${videoId}`;
-        document.getElementById('btnThumbDownload').href = highResThumb;
+        document.getElementById('resTitle').innerText = `Video Loaded: ${videoId}`;
 
-        // Multiple direct high-speed download gateways (No bot blocks)
-        const gateway1080 = `https://10downloader.com/download?v=https://www.youtube.com/watch?v=${videoId}`;
-        const gateway720 = `https://en.savefrom.net/#url=https://www.youtube.com/watch?v=${videoId}`;
-        const gatewayMP3 = `https://ytmp3.mobi/button-api/#${videoId}|mp3`;
+        // In-page Native Embed Engine (User stays on your Vercel website)
+        downloadIframe.src = `https://loader.to/api/card/?url=https://www.youtube.com/watch?v=${videoId}`;
 
-        formatsTableBody.innerHTML = `
-          <tr class="hover:bg-white/5 transition">
-            <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-film text-[#ff2e63]"></i> MP4 Full HD
-            </td>
-            <td class="py-3 px-4 text-gray-300 font-mono">1080p / 720p</td>
-            <td class="py-3 px-4 text-right">
-              <a href="${gateway1080}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-[#ff2e63] to-[#ff007f] text-white font-bold text-xs hover:opacity-90 shadow-md shadow-[#ff2e63]/40 transition">
-                <i class="fa-solid fa-download"></i> Download Video
-              </a>
-            </td>
-          </tr>
-          <tr class="hover:bg-white/5 transition">
-            <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-video text-blue-400"></i> MP4 Fast Stream
-            </td>
-            <td class="py-3 px-4 text-gray-300 font-mono">720p / 480p</td>
-            <td class="py-3 px-4 text-right">
-              <a href="${gateway720}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/10 transition">
-                <i class="fa-solid fa-bolt"></i> Fast Mirror
-              </a>
-            </td>
-          </tr>
-          <tr class="hover:bg-white/5 transition">
-            <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-headphones text-purple-400"></i> MP3 Audio
-            </td>
-            <td class="py-3 px-4 text-gray-300 font-mono">320 kbps HQ</td>
-            <td class="py-3 px-4 text-right">
-              <a href="${gateway1080}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 font-bold text-xs border border-purple-500/30 transition">
-                <i class="fa-solid fa-music"></i> Download Audio
-              </a>
-            </td>
-          </tr>
-        `;
-
-        saveToRecent(`YouTube Video (${videoId})`, highResThumb, gateway1080);
+        saveToRecent(`Video (${videoId})`, highResThumb, rawUrl);
 
         loaderBox.classList.add('hidden');
         resultSection.classList.remove('hidden');
@@ -472,7 +416,7 @@
 
         btnSubmit.disabled = false;
         btnSubmit.classList.remove('opacity-50');
-      }, 1500);
+      }, 1200);
     });
   </script>
 </body>
