@@ -1,0 +1,9 @@
+{
+  "name": "y2mate-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Self-hosted YouTube Downloader with Animated UI",
+  "dependencies": {
+    "@distube/ytdl-core": "^4.14.4"
+  }
+}
